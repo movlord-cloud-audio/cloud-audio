@@ -1,12 +1,40 @@
 const STORAGE_KEY = 'drive-player-config';
 
 window.addEventListener('DOMContentLoaded', () => {
-    // repeat on by default
     const audio = document.getElementById('audioPlayer');
     audio.loop = true;
-    const btn = document.getElementById('loopBtn');
-    btn.textContent = '⟳ REPEAT ON';
-    btn.classList.add('active');
+    document.getElementById('loopBtn').classList.add('active');
+
+    // Progress bar
+    const progressBar = document.getElementById('progressBar');
+    audio.addEventListener('timeupdate', updateProgress);
+    audio.addEventListener('loadedmetadata', updateProgress);
+    audio.addEventListener('ended', () => {
+        document.getElementById('playBtn').textContent = '▶';
+    });
+    audio.addEventListener('play', () => {
+        document.getElementById('playBtn').textContent = '▐▐';
+    });
+    audio.addEventListener('pause', () => {
+        document.getElementById('playBtn').textContent = '▶';
+    });
+
+    progressBar.addEventListener('click', (e) => {
+        const rect = progressBar.getBoundingClientRect();
+        const pct = (e.clientX - rect.left) / rect.width;
+        if (audio.duration) audio.currentTime = pct * audio.duration;
+    });
+
+    // Drag support
+    let dragging = false;
+    progressBar.addEventListener('mousedown', () => dragging = true);
+    window.addEventListener('mouseup', () => dragging = false);
+    window.addEventListener('mousemove', (e) => {
+        if (!dragging) return;
+        const rect = progressBar.getBoundingClientRect();
+        const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        if (audio.duration) audio.currentTime = pct * audio.duration;
+    });
 
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
@@ -14,6 +42,35 @@ window.addEventListener('DOMContentLoaded', () => {
         loadFiles(true);
     }
 });
+
+function updateProgress() {
+    const audio = document.getElementById('audioPlayer');
+    const pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressThumb').style.left = pct + '%';
+    document.getElementById('timeCurrent').textContent = formatTime(audio.currentTime);
+    document.getElementById('timeTotal').textContent = formatTime(audio.duration || 0);
+}
+
+function formatTime(s) {
+    if (!s || isNaN(s)) return '0:00';
+    const m = Math.floor(s / 60);
+    const sec = Math.floor(s % 60).toString().padStart(2, '0');
+    return `${m}:${sec}`;
+}
+
+function togglePlay() {
+    const audio = document.getElementById('audioPlayer');
+    audio.paused ? audio.play() : audio.pause();
+}
+
+function seekBack() {
+    document.getElementById('audioPlayer').currentTime -= 10;
+}
+
+function seekForward() {
+    document.getElementById('audioPlayer').currentTime += 10;
+}
 
 const AUDIO_MIME_TYPES = [
     'audio/webm', 'audio/mp4', 'audio/mpeg', 'audio/ogg',
@@ -24,7 +81,6 @@ function toggleLoop() {
     const audio = document.getElementById('audioPlayer');
     const btn = document.getElementById('loopBtn');
     audio.loop = !audio.loop;
-    btn.textContent = audio.loop ? '⟳ REPEAT ON' : '⟳ REPEAT OFF';
     btn.classList.toggle('active', audio.loop);
 }
 

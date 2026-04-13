@@ -27,8 +27,23 @@
     <div class="player" id="player">
         <div class="now-playing-label">NOW PLAYING</div>
         <div class="now-playing-title" id="nowPlayingTitle">—</div>
-        <audio id="audioPlayer" controls></audio>
-        <button id="loopBtn" onclick="toggleLoop()">⟳ REPEAT OFF</button>
+        <audio id="audioPlayer"></audio>
+        <div class="custom-player">
+            <div class="progress-bar" id="progressBar">
+                <div class="progress-fill" id="progressFill"></div>
+                <div class="progress-thumb" id="progressThumb"></div>
+            </div>
+            <div class="time-row">
+                <span id="timeCurrent">0:00</span>
+                <span id="timeTotal">0:00</span>
+            </div>
+            <div class="controls-row">
+                <button class="ctrl-btn" onclick="seekBack()">⟨ 10s</button>
+                <button class="ctrl-btn play-btn" id="playBtn" onclick="togglePlay()">▶</button>
+                <button class="ctrl-btn loop-btn" id="loopBtn" onclick="toggleLoop()">⟳</button>
+                <button class="ctrl-btn" onclick="seekForward()">10s ⟩</button>
+            </div>
+        </div>
     </div>
 
     <div class="status" id="status"></div>

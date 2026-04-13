@@ -222,9 +222,92 @@ h1 {
 }
 
 audio {
-    width: 100%;
-    accent-color: var(--accent);
-    height: 36px;
+    display: none;
+}
+
+/* CUSTOM PLAYER */
+.custom-player {
+    margin-top: 4px;
+}
+
+.progress-bar {
+    position: relative;
+    height: 4px;
+    background: var(--border);
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--accent);
+    width: 0%;
+    pointer-events: none;
+}
+
+.progress-thumb {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    transition: transform 0.1s;
+}
+
+.progress-bar:hover .progress-thumb {
+    transform: translate(-50%, -50%) scale(1.4);
+}
+
+.time-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.68rem;
+    color: var(--muted);
+    margin-bottom: 12px;
+}
+
+.controls-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ctrl-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    padding: 6px 12px;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: all 0.15s;
+}
+
+.ctrl-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.play-btn {
+    border-color: var(--accent);
+    color: var(--accent);
+    font-size: 0.9rem;
+    padding: 8px 20px;
+}
+
+.play-btn:hover {
+    background: var(--accent);
+    color: #000;
+}
+
+.loop-btn.active {
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
 /* STATUS */
@@ -267,28 +350,6 @@ audio {
     text-decoration: underline;
 }
 
-#loopBtn {
-    margin-top: 10px;
-    background: none;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    padding: 6px 12px;
-    cursor: pointer;
-    letter-spacing: 0.05em;
-    transition: all 0.15s;
-}
-
-#loopBtn:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-}
-
-#loopBtn.active {
-    border-color: var(--accent);
-    color: var(--accent);
-}
 
 .empty {
     padding: 40px;
