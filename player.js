@@ -3,7 +3,9 @@ const STORAGE_KEY = 'drive-player-config';
 window.addEventListener('DOMContentLoaded', () => {
     const audio = document.getElementById('audioPlayer');
     audio.loop = true;
-    document.getElementById('loopBtn').classList.add('active');
+    const loopBtn = document.getElementById('loopBtn');
+    loopBtn.textContent = '⟳ ON';
+    loopBtn.classList.add('active');
 
     // Progress bar
     const progressBar = document.getElementById('progressBar');
@@ -74,6 +76,7 @@ function toggleLoop() {
     const audio = document.getElementById('audioPlayer');
     const btn = document.getElementById('loopBtn');
     audio.loop = !audio.loop;
+    btn.textContent = audio.loop ? '⟳ ON' : '⟳ OFF';
     btn.classList.toggle('active', audio.loop);
 }
 
