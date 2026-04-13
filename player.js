@@ -10,6 +10,14 @@ const AUDIO_MIME_TYPES = [
     'audio/opus', 'audio/wav', 'audio/flac', 'audio/aac'
 ];
 
+function toggleLoop() {
+    const audio = document.getElementById('audioPlayer');
+    const btn = document.getElementById('loopBtn');
+    audio.loop = !audio.loop;
+    btn.textContent = audio.loop ? '⟳ REPEAT ON' : '⟳ REPEAT OFF';
+    btn.classList.toggle('active', audio.loop);
+}
+
 function setStatus(msg, type = '') {
     const el = document.getElementById('status');
     el.textContent = msg;
