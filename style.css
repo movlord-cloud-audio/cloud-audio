@@ -305,9 +305,15 @@ audio {
     color: #000;
 }
 
+.loop-btn {
+    color: var(--muted);
+    border-color: var(--border);
+}
+
 .loop-btn.active {
     border-color: var(--accent);
     color: var(--accent);
+    background: rgba(200, 245, 66, 0.08);
 }
 
 /* STATUS */
