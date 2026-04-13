@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drive Player</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>// DRIVE PLAYER</h1>
+        <div class="subtitle">GOOGLE DRIVE AUDIO BROWSER</div>
+    </header>
+
+    <div class="info-box">
+        Нужен Google Drive API Key (бесплатно):<br>
+        1. <a href="https://console.cloud.google.com/" target="_blank">console.cloud.google.com</a> → создай проект<br>
+        2. APIs & Services → Enable APIs → включи <b>Google Drive API</b><br>
+        3. APIs & Services → Credentials → <b>Create Credentials → API key</b>
+    </div>
+
+    <div class="input-section">
+        <textarea id="config" placeholder="API Key&#10;Folder ID" spellcheck="false"></textarea>
+        <button onclick="loadFiles()">LOAD</button>
+    </div>
+
+    <div class="file-list" id="fileList">
+        <div class="empty">Введи API Key и нажми LOAD</div>
+    </div>
+
+    <div class="player" id="player">
+        <div class="now-playing-label">NOW PLAYING</div>
+        <div class="now-playing-title" id="nowPlayingTitle">—</div>
+        <audio id="audioPlayer" controls></audio>
+    </div>
+
+    <div class="status" id="status"></div>
+
+    <script src="player.js"></script>
+</body>
+
+</html>
