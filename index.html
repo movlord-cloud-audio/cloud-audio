@@ -4,16 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drive Player</title>
+    <title>Cloud audio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='50' x='50' dominant-baseline='central' text-anchor='middle' font-size='80'>🎶</text></svg>">
 </head>
 
 <body>
     <header>
-        <h1>// CLOUD PLAYER</h1>
+        <h1>// CLOUD AUDIO</h1>
     </header>
 
-    <div class="input-section">
+    <div class="input-section" id="inputSection">
         <textarea id="config" placeholder="API Key&#10;Folder ID" spellcheck="false"></textarea>
         <button onclick="loadFiles()">LOAD</button>
     </div>

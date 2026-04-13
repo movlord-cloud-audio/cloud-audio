@@ -1,8 +1,18 @@
 const STORAGE_KEY = 'drive-player-config';
 
 window.addEventListener('DOMContentLoaded', () => {
+    // repeat on by default
+    const audio = document.getElementById('audioPlayer');
+    audio.loop = true;
+    const btn = document.getElementById('loopBtn');
+    btn.textContent = '⟳ REPEAT ON';
+    btn.classList.add('active');
+
     const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) document.getElementById('config').value = saved;
+    if (saved) {
+        document.getElementById('config').value = saved;
+        loadFiles(true);
+    }
 });
 
 const AUDIO_MIME_TYPES = [
@@ -30,7 +40,7 @@ function formatSize(bytes) {
     return mb >= 1 ? mb.toFixed(1) + ' MB' : (bytes / 1024).toFixed(0) + ' KB';
 }
 
-async function loadFiles() {
+async function loadFiles(fromStorage = false) {
     const lines = document.getElementById('config').value.trim().split('\n').map(l => l.trim()).filter(Boolean);
     const apiKey = lines[0] || '';
     const folderId = lines[1] || '';
@@ -67,6 +77,7 @@ async function loadFiles() {
 
         renderFiles(files, apiKey);
         setStatus(`Найдено файлов: ${files.length}`, 'ok');
+        document.getElementById('inputSection').style.display = 'none';
 
     } catch (e) {
         setStatus('Ошибка сети: ' + e.message, 'error');
