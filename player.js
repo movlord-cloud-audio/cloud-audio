@@ -167,6 +167,7 @@ function playFile(file, apiKey, itemEl) {
     document.getElementById('nowPlayingTitle').textContent = file.name;
     document.getElementById('player').classList.add('visible');
     setStatus('');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
     audio.onerror = () => {
         setStatus('Ошибка воспроизведения — возможно, Google Drive блокирует прямой стриминг для этого файла', 'error');
