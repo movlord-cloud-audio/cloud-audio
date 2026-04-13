@@ -288,11 +288,6 @@ audio {
     transition: all 0.15s;
 }
 
-.ctrl-btn:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-}
-
 .play-btn {
     border-color: var(--accent);
     color: var(--accent);
@@ -300,22 +295,7 @@ audio {
     padding: 8px 20px;
 }
 
-.play-btn:hover {
-    background: var(--accent);
-    color: #000;
-}
 
-@media (hover: none) {
-    .ctrl-btn:hover {
-        border-color: var(--border);
-        color: var(--muted);
-    }
-
-    .play-btn:hover {
-        background: none;
-        color: var(--accent);
-    }
-}
 
 .loop-btn {
     color: var(--muted);
