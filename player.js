@@ -1,3 +1,10 @@
+const STORAGE_KEY = 'drive-player-config';
+
+window.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) document.getElementById('config').value = saved;
+});
+
 const AUDIO_MIME_TYPES = [
     'audio/webm', 'audio/mp4', 'audio/mpeg', 'audio/ogg',
     'audio/opus', 'audio/wav', 'audio/flac', 'audio/aac'
@@ -22,6 +29,8 @@ async function loadFiles() {
 
     if (!apiKey) { setStatus('Введи API Key (первая строка)', 'error'); return; }
     if (!folderId) { setStatus('Введи Folder ID (вторая строка)', 'error'); return; }
+
+    localStorage.setItem(STORAGE_KEY, document.getElementById('config').value);
 
     setStatus('Загружаю список файлов...');
     document.getElementById('fileList').innerHTML = '<div class="empty">Загрузка...</div>';
