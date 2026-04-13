@@ -305,6 +305,18 @@ audio {
     color: #000;
 }
 
+@media (hover: none) {
+    .ctrl-btn:hover {
+        border-color: var(--border);
+        color: var(--muted);
+    }
+
+    .play-btn:hover {
+        background: none;
+        color: var(--accent);
+    }
+}
+
 .loop-btn {
     color: var(--muted);
     border-color: var(--border);
