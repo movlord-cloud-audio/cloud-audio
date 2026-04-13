@@ -64,13 +64,6 @@ function togglePlay() {
     audio.paused ? audio.play() : audio.pause();
 }
 
-function seekBack() {
-    document.getElementById('audioPlayer').currentTime -= 10;
-}
-
-function seekForward() {
-    document.getElementById('audioPlayer').currentTime += 10;
-}
 
 const AUDIO_MIME_TYPES = [
     'audio/webm', 'audio/mp4', 'audio/mpeg', 'audio/ogg',
