@@ -36,6 +36,13 @@ window.addEventListener('DOMContentLoaded', () => {
         if (audio.duration) audio.currentTime = pct * audio.duration;
     });
 
+    window.addEventListener('keydown', (e) => {
+        if (e.code === 'Space' && e.target.tagName !== 'TEXTAREA') {
+            e.preventDefault();
+            togglePlay();
+        }
+    });
+
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
         document.getElementById('config').value = saved;
