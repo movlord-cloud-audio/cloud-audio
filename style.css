@@ -236,6 +236,9 @@ audio {
     background: var(--border);
     cursor: pointer;
     margin-bottom: 8px;
+    padding: 10px 0;
+    margin-top: -10px;
+    background-clip: content-box;
 }
 
 .progress-fill {
