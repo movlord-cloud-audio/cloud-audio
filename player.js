@@ -89,7 +89,7 @@ function setStatus(msg, type = '') {
 function formatSize(bytes) {
     if (!bytes) return '';
     const mb = bytes / 1024 / 1024;
-    return mb >= 1 ? mb.toFixed(1) + ' MB' : (bytes / 1024).toFixed(0) + ' KB';
+    return mb >= 1 ? Math.round(mb) + ' MB' : Math.round(bytes / 1024) + ' KB';
 }
 
 async function loadFiles(fromStorage = false) {
