@@ -7,7 +7,6 @@ window.addEventListener('DOMContentLoaded', () => {
     loopBtn.textContent = '⟳ ON';
     loopBtn.classList.add('active');
 
-    // Progress bar
     const progressBar = document.getElementById('progressBar');
     audio.addEventListener('timeupdate', updateProgress);
     audio.addEventListener('loadedmetadata', updateProgress);
@@ -27,7 +26,6 @@ window.addEventListener('DOMContentLoaded', () => {
         if (audio.duration) audio.currentTime = pct * audio.duration;
     });
 
-    // Drag support
     let dragging = false;
     progressBar.addEventListener('mousedown', () => dragging = true);
     window.addEventListener('mouseup', () => dragging = false);
@@ -65,7 +63,6 @@ function togglePlay() {
     const audio = document.getElementById('audioPlayer');
     audio.paused ? audio.play() : audio.pause();
 }
-
 
 const AUDIO_MIME_TYPES = [
     'audio/webm', 'audio/mp4', 'audio/mpeg', 'audio/ogg',
@@ -106,7 +103,7 @@ async function loadFiles(fromStorage = false) {
     document.getElementById('fileList').innerHTML = '<div class="empty">Загрузка...</div>';
 
     try {
-        const url = `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&fields=files(id,name,mimeType,size)&key=${apiKey}&pageSize=100`;
+        const url = `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&fields=files(id,name,mimeType,size)&orderBy=name&key=${apiKey}&pageSize=100`;
         const res = await fetch(url);
         const data = await res.json();
 
@@ -145,11 +142,11 @@ function renderFiles(files, apiKey) {
         item.className = 'file-item';
         item.dataset.id = file.id;
         item.innerHTML = `
-      <div class="playing-indicator"></div>
-      <div class="file-icon">▶</div>
-      <div class="file-name">${file.name.replace(/\.[^.]+$/, '')}</div>
-      <div class="file-size">${formatSize(file.size)}</div>
-    `;
+            <div class="playing-indicator"></div>
+            <div class="file-icon">▶</div>
+            <div class="file-name">${file.name.replace(/\.[^.]+$/, '')}</div>
+            <div class="file-size">${formatSize(file.size)}</div>
+        `;
         item.onclick = () => playFile(file, apiKey, item);
         list.appendChild(item);
     });
