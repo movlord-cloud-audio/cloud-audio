@@ -147,7 +147,7 @@ function renderFiles(files, apiKey) {
         item.innerHTML = `
       <div class="playing-indicator"></div>
       <div class="file-icon">▶</div>
-      <div class="file-name">${file.name}</div>
+      <div class="file-name">${file.name.replace(/\.[^.]+$/, '')}</div>
       <div class="file-size">${formatSize(file.size)}</div>
     `;
         item.onclick = () => playFile(file, apiKey, item);
@@ -167,7 +167,7 @@ function playFile(file, apiKey, itemEl) {
         setStatus('Не удалось воспроизвести: ' + e.message, 'error');
     });
 
-    document.getElementById('nowPlayingTitle').textContent = file.name;
+    document.getElementById('nowPlayingTitle').textContent = file.name.replace(/\.[^.]+$/, '');
     document.getElementById('player').classList.add('visible');
     setStatus('');
     window.scrollTo({ top: 0, behavior: 'smooth' });
