@@ -167,9 +167,12 @@ function playFile(file, apiKey, itemEl) {
 
     const audio = document.getElementById('audioPlayer');
     audio.src = directUrl;
-    audio.play().catch(e => {
-        setStatus('Не удалось воспроизвести: ' + e.message, 'error');
-    });
+    audio.addEventListener('loadedmetadata', () => {
+        if (audio.duration) audio.currentTime = Math.random() * audio.duration;
+        audio.play().catch(e => {
+            setStatus('Не удалось воспроизвести: ' + e.message, 'error');
+        });
+    }, { once: true });
 
     document.getElementById('nowPlayingTitle').textContent = file.name.replace(/\.[^.]+$/, '');
     document.getElementById('player').classList.add('visible');
