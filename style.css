@@ -198,24 +198,6 @@ h1 {
     padding: 20px;
 }
 
-.now-playing-header {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-    margin-bottom: 16px;
-    overflow: hidden;
-}
-
-.now-playing-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
-    color: var(--muted);
-    margin-bottom: 6px;
-    text-transform: uppercase;
-    white-space: nowrap;
-    flex-shrink: 0;
-}
-
 .now-playing-title {
     font-size: 0.85rem;
     color: var(--accent);
