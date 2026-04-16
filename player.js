@@ -183,3 +183,16 @@ function playFile(file, apiKey, itemEl) {
         setStatus('Ошибка воспроизведения — возможно, Google Drive блокирует прямой стриминг для этого файла', 'error');
     };
 }
+
+function playRandom() {
+    const items = document.querySelectorAll('.file-item');
+
+    if (items.length === 0) {
+        setStatus('Сначала загрузи список файлов', 'error');
+        return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * items.length);
+    const randomItem = items[randomIndex];
+    randomItem.click();
+}
