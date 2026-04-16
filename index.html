@@ -11,18 +11,16 @@
 </head>
 
 <body>
-    <header>
-        <h1>// CLOUD AUDIO</h1>
-    </header>
-
     <div class="input-section" id="inputSection">
         <textarea id="config" placeholder="API Key&#10;Folder ID" spellcheck="false"></textarea>
         <button onclick="loadFiles()">LOAD</button>
     </div>
 
     <div class="player" id="player">
-        <div class="now-playing-label">NOW PLAYING</div>
-        <div class="now-playing-title" id="nowPlayingTitle">—</div>
+        <div class="now-playing-header">
+            <div class="now-playing-label">NOW PLAYING</div>
+            <div class="now-playing-title" id="nowPlayingTitle">—</div>
+        </div>
         <audio id="audioPlayer"></audio>
         <div class="custom-player">
             <div class="progress-bar" id="progressBar">
