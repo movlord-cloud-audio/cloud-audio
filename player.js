@@ -175,7 +175,6 @@ function playFile(file, apiKey, itemEl) {
     }, { once: true });
 
     document.getElementById('nowPlayingTitle').textContent = file.name.replace(/\.[^.]+$/, '');
-    document.getElementById('player').classList.add('visible');
     setStatus('');
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
