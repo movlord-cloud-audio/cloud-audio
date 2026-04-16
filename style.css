@@ -195,7 +195,7 @@ h1 {
     max-width: 700px;
     background: var(--surface);
     border: 1px solid var(--border);
-    padding: 20px;
+    padding: 10px 20px 20px;
 }
 
 .now-playing-title {
@@ -204,7 +204,7 @@ h1 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    margin-bottom: 0;
+    margin-bottom: 10px;
 }
 
 audio {
@@ -231,7 +231,6 @@ audio {
     margin-top: -10px;
     background: var(--border);
     background-clip: content-box;
-    margin-bottom: 0;
 }
 
 .progress-fill {
@@ -264,7 +263,6 @@ audio {
     font-size: 0.68rem;
     color: var(--muted);
     margin-top: -4px;
-    margin-bottom: 0;
 }
 
 .controls-row {

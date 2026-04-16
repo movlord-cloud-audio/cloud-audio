@@ -68,7 +68,13 @@ function formatTime(s) {
 
 function togglePlay() {
     const audio = document.getElementById('audioPlayer');
-    audio.paused ? audio.play() : audio.pause();
+    const isNoTrackLoaded = !audio.src || audio.src === window.location.href;
+
+    if (isNoTrackLoaded) {
+        playRandom();
+    } else {
+        audio.paused ? audio.play() : audio.pause();
+    }
 }
 
 const AUDIO_MIME_TYPES = [
