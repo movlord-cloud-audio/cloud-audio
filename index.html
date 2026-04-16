@@ -20,18 +20,20 @@
         <div class="now-playing-title" id="nowPlayingTitle">—————</div>
         <audio id="audioPlayer"></audio>
         <div class="custom-player">
-            <div class="progress-bar" id="progressBar">
-                <div class="progress-fill" id="progressFill"></div>
-                <div class="progress-thumb" id="progressThumb"></div>
-            </div>
-            <div class="time-row">
-                <span id="timeCurrent">0:00</span>
-                <span id="timeTotal">0:00</span>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                    <div class="progress-thumb" id="progressThumb"></div>
+                </div>
+                <div class="time-row">
+                    <span id="timeCurrent">0:00</span>
+                    <span id="timeTotal">0:00</span>
+                </div>
             </div>
             <div class="controls-row">
                 <button class="ctrl-btn play-btn" id="playBtn" onclick="togglePlay()">▶</button>
                 <button class="ctrl-btn loop-btn" id="loopBtn" onclick="toggleLoop()">⟳</button>
-                <button class="ctrl-btn" id="randomBtn" onclick="playRandom()">🎲</button>
+                <button class="ctrl-btn" id="randomBtn" onclick="playRandom()" title="Случайный трек">🎲</button>
             </div>
         </div>
     </div>
